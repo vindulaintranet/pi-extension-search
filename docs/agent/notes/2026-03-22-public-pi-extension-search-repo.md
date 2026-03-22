@@ -15,6 +15,7 @@ The original implementation lived inside `vindulautils` at `projects/pi-extensio
   - `CHANGELOG.md`
   - `LICENSE`
   - `.gitignore`
+  - GitHub Actions CI workflow
 - Used `files` in `package.json` so the package stays small and predictable.
 - Kept API key loading support from both shell env and Pi `settings.json`.
 
@@ -23,6 +24,7 @@ The original implementation lived inside `vindulautils` at `projects/pi-extensio
 - `npx -y esbuild search.ts --bundle --platform=node --format=cjs --outfile=/tmp/pi-extension-search-check.js --external:@mariozechner/pi-coding-agent --external:@sinclair/typebox`
 - `git init -b main`
 - `gh repo create vindulaintranet/pi-extension-search --public --source=. --remote=origin --push`
+- `gh api -X PUT repos/vindulaintranet/pi-extension-search/topics -H 'Accept: application/vnd.github+json' -f names[]='pi-package' -f names[]='pi-extension' -f names[]='search' -f names[]='exa' -f names[]='brave-search'`
 
 ## Files changed
 - `package.json`
@@ -31,6 +33,7 @@ The original implementation lived inside `vindulautils` at `projects/pi-extensio
 - `CHANGELOG.md`
 - `LICENSE`
 - `.gitignore`
+- `.github/workflows/ci.yml`
 - `docs/agent/notes/2026-03-22-public-pi-extension-search-repo.md`
 
 ## Tests

@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate package contents
+        run: npm pack --dry-run
+
+      - name: Bundle syntax check
+        run: |
+          npx -y esbuild search.ts \
+            --bundle \
+            --platform=node \
+            --format=cjs \
+            --outfile=/tmp/pi-extension-search-check.js \
+            --external:@mariozechner/pi-coding-agent \
+            --external:@sinclair/typebox
