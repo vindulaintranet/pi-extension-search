@@ -1,9 +1,14 @@
 # pi-extension-search
 
+[![CI](https://github.com/vindulaintranet/pi-extension-search/actions/workflows/ci.yml/badge.svg)](https://github.com/vindulaintranet/pi-extension-search/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/vindulaintranet/pi-extension-search)](https://github.com/vindulaintranet/pi-extension-search/releases)
+
 A public-ready [Pi](https://github.com/badlogic/pi-mono) package that adds two web search tools:
 
 - `exa_search`
 - `brave_search`
+
+Created by [Fabio Rizzo Matos](https://github.com/fabiorizzomatos) · contact: `fabiorizzo@vindula.com.br`
 
 ## What it does
 
@@ -20,6 +25,12 @@ It also supports loading API keys from Pi settings, not only from shell environm
 
 ```bash
 pi install git:github.com/vindulaintranet/pi-extension-search
+```
+
+### Pin to a release tag
+
+```bash
+pi install git:github.com/vindulaintranet/pi-extension-search@v0.1.0
 ```
 
 ### From a local path
@@ -96,6 +107,57 @@ Global file: `~/.pi/agent/settings.json`
 
 The extension checks the current shell first, then project Pi settings, then global Pi settings.
 
+## Quality checks
+
+Run everything locally with:
+
+```bash
+npm install
+npm run validate
+```
+
+This runs:
+- unit tests for the core search helpers
+- bundle validation for the Pi extension entrypoint
+- `npm pack --dry-run` to validate package contents
+
+## Contributions
+
+If you want to contribute:
+
+1. fork the repository
+2. create a branch
+3. run `npm run validate`
+4. open a pull request
+
+See:
+- [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [RELEASING.md](./RELEASING.md)
+
+## How updates reach Pi users
+
+### Users installed from the default branch
+
+```bash
+pi install git:github.com/vindulaintranet/pi-extension-search
+```
+
+They can later run:
+
+```bash
+pi update
+```
+
+and Pi will pull the latest package state from the default branch.
+
+### Users installed from a pinned tag
+
+```bash
+pi install git:github.com/vindulaintranet/pi-extension-search@v0.1.0
+```
+
+Pinned installs do not move automatically on `pi update`. They stay on that exact ref until the user upgrades intentionally.
+
 ## Package manifest
 
 This repository is a Pi package via `package.json`:
@@ -107,15 +169,6 @@ This repository is a Pi package via `package.json`:
     "extensions": ["./search.ts"]
   }
 }
-```
-
-## Validation
-
-Recommended checks:
-
-```bash
-npm pack --dry-run
-npx -y esbuild search.ts --bundle --platform=node --format=cjs --outfile=/tmp/pi-extension-search-check.js --external:@mariozechner/pi-coding-agent --external:@sinclair/typebox
 ```
 
 ## License
