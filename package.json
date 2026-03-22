@@ -1,0 +1,37 @@
+{
+  "name": "@vindulaintranet/pi-extension-search",
+  "version": "0.1.0",
+  "description": "Pi package with web search tools powered by Exa and Brave Search",
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "search",
+    "exa",
+    "brave"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vindulaintranet/pi-extension-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vindulaintranet/pi-extension-search/issues"
+  },
+  "homepage": "https://github.com/vindulaintranet/pi-extension-search#readme",
+  "pi": {
+    "extensions": [
+      "./search.ts"
+    ]
+  },
+  "files": [
+    "search.ts",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "docs/agent/notes"
+  ],
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@sinclair/typebox": "*"
+  }
+}
