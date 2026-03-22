@@ -18,6 +18,7 @@ The original implementation lived inside `vindulautils` at `projects/pi-extensio
   - `.gitignore`
   - GitHub Actions CI workflow
   - GitHub Actions release workflow
+- Updated GitHub Actions workflow actions to current majors (`actions/checkout@v6`, `actions/setup-node@v6`) after the first release run surfaced a Node 20 deprecation warning.
   - `CONTRIBUTING.md`
   - `RELEASING.md`
   - PR template
